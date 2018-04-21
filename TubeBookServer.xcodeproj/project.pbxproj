@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C1E9E242070C04700A96073 /* TubeArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E9E232070C04700A96073 /* TubeArticleManager.m */; };
+		3C1E9E272070C06E00A96073 /* BaseTubeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E9E262070C06E00A96073 /* BaseTubeManager.m */; };
+		3C3CF760208AE3A60009E787 /* PriorityQueue.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CF75F208AE3A60009E787 /* PriorityQueue.mm */; };
+		3C3CF763208AE99B0009E787 /* UserSimilarity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CF762208AE99B0009E787 /* UserSimilarity.m */; };
+		3CB2E1A8207F435C00D7F3C6 /* TubeUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2E1A7207F435C00D7F3C6 /* TubeUserManager.m */; };
+		3CBC3DB02046F65900C5C6CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DAF2046F65900C5C6CD /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3CBC3DB82046F74D00C5C6CD /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DB72046F74D00C5C6CD /* SocketManager.m */; };
+		3CBC3DBB204830DE00C5C6CD /* TubeServerSocketSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DBA204830DE00C5C6CD /* TubeServerSocketSDK.m */; };
+		3CBC3DBF20483D4F00C5C6CD /* TubeSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DBE20483D4F00C5C6CD /* TubeSDK.m */; };
+		3CBC3DC52048EEBE00C5C6CD /* DBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DC42048EEBE00C5C6CD /* DBHelper.m */; };
+		3CBC3DC820492E6300C5C6CD /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DC720492E6300C5C6CD /* LoginManager.m */; };
+		3CBC3DCB2049589B00C5C6CD /* LoginSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DCA2049589B00C5C6CD /* LoginSDK.m */; };
+		3CBC3DD6204A96C200C5C6CD /* TubeAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DD2204A7C5000C5C6CD /* TubeAddress.m */; };
+		3CBC3DD7204A96C200C5C6CD /* BaseProtocolHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DCF204A7C5000C5C6CD /* BaseProtocolHeader.m */; };
+		3CBC3DD8204A96C200C5C6CD /* BaseProtocolContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DD0204A7C5000C5C6CD /* BaseProtocolContent.m */; };
+		3CBC3DD9204A96C200C5C6CD /* BaseSocketPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC3DD1204A7C5000C5C6CD /* BaseSocketPackage.m */; };
+		3CDFF56020835D1300E345E2 /* TimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFF55F20835D1300E345E2 /* TimeUtil.m */; };
+		F7C1059CAD5BD8AB749B5EE8 /* libPods-TubeBookServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AA91D587477DB78E00740B /* libPods-TubeBookServer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3CBC3DAA2046F65900C5C6CD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3C1E9E222070C04700A96073 /* TubeArticleManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TubeArticleManager.h; sourceTree = "<group>"; };
+		3C1E9E232070C04700A96073 /* TubeArticleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TubeArticleManager.m; sourceTree = "<group>"; };
+		3C1E9E252070C06E00A96073 /* BaseTubeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTubeManager.h; sourceTree = "<group>"; };
+		3C1E9E262070C06E00A96073 /* BaseTubeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTubeManager.m; sourceTree = "<group>"; };
+		3C3CF75E208AE3A60009E787 /* PriorityQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueue.h; sourceTree = "<group>"; };
+		3C3CF75F208AE3A60009E787 /* PriorityQueue.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PriorityQueue.mm; sourceTree = "<group>"; };
+		3C3CF761208AE99B0009E787 /* UserSimilarity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSimilarity.h; sourceTree = "<group>"; };
+		3C3CF762208AE99B0009E787 /* UserSimilarity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSimilarity.m; sourceTree = "<group>"; };
+		3CB2E1A6207F435C00D7F3C6 /* TubeUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TubeUserManager.h; sourceTree = "<group>"; };
+		3CB2E1A7207F435C00D7F3C6 /* TubeUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TubeUserManager.m; sourceTree = "<group>"; };
+		3CBC3DAC2046F65900C5C6CD /* TubeBookServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TubeBookServer; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CBC3DAF2046F65900C5C6CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3CBC3DB62046F74D00C5C6CD /* SocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
+		3CBC3DB72046F74D00C5C6CD /* SocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
+		3CBC3DB9204830DE00C5C6CD /* TubeServerSocketSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TubeServerSocketSDK.h; sourceTree = "<group>"; };
+		3CBC3DBA204830DE00C5C6CD /* TubeServerSocketSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TubeServerSocketSDK.m; sourceTree = "<group>"; };
+		3CBC3DBD20483D4F00C5C6CD /* TubeSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TubeSDK.h; sourceTree = "<group>"; };
+		3CBC3DBE20483D4F00C5C6CD /* TubeSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TubeSDK.m; sourceTree = "<group>"; };
+		3CBC3DC32048EEBE00C5C6CD /* DBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBHelper.h; sourceTree = "<group>"; };
+		3CBC3DC42048EEBE00C5C6CD /* DBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBHelper.m; sourceTree = "<group>"; };
+		3CBC3DC620492E6300C5C6CD /* LoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginManager.h; sourceTree = "<group>"; };
+		3CBC3DC720492E6300C5C6CD /* LoginManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
+		3CBC3DC92049589B00C5C6CD /* LoginSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginSDK.h; sourceTree = "<group>"; };
+		3CBC3DCA2049589B00C5C6CD /* LoginSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginSDK.m; sourceTree = "<group>"; };
+		3CBC3DCD204A7C5000C5C6CD /* ProtocolConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProtocolConst.h; sourceTree = "<group>"; };
+		3CBC3DCE204A7C5000C5C6CD /* TubeAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TubeAddress.h; sourceTree = "<group>"; };
+		3CBC3DCF204A7C5000C5C6CD /* BaseProtocolHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseProtocolHeader.m; sourceTree = "<group>"; };
+		3CBC3DD0204A7C5000C5C6CD /* BaseProtocolContent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseProtocolContent.m; sourceTree = "<group>"; };
+		3CBC3DD1204A7C5000C5C6CD /* BaseSocketPackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseSocketPackage.m; sourceTree = "<group>"; };
+		3CBC3DD2204A7C5000C5C6CD /* TubeAddress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TubeAddress.m; sourceTree = "<group>"; };
+		3CBC3DD3204A7C5000C5C6CD /* BaseProtocolHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseProtocolHeader.h; sourceTree = "<group>"; };
+		3CBC3DD4204A7C5000C5C6CD /* BaseSocketPackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseSocketPackage.h; sourceTree = "<group>"; };
+		3CBC3DD5204A7C5000C5C6CD /* BaseProtocolContent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseProtocolContent.h; sourceTree = "<group>"; };
+		3CDFF55E20835D1300E345E2 /* TimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeUtil.h; sourceTree = "<group>"; };
+		3CDFF55F20835D1300E345E2 /* TimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeUtil.m; sourceTree = "<group>"; };
+		A70BE34FFD1F717461614390 /* Pods-TubeBookServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeBookServer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TubeBookServer/Pods-TubeBookServer.debug.xcconfig"; sourceTree = "<group>"; };
+		CB0C68EC658D0705D0898F35 /* Pods-TubeBookServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeBookServer.release.xcconfig"; path = "Pods/Target Support Files/Pods-TubeBookServer/Pods-TubeBookServer.release.xcconfig"; sourceTree = "<group>"; };
+		F1AA91D587477DB78E00740B /* libPods-TubeBookServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TubeBookServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3CBC3DA92046F65900C5C6CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C1059CAD5BD8AB749B5EE8 /* libPods-TubeBookServer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C1E9E1E2070BD5F00A96073 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				3C1E9E222070C04700A96073 /* TubeArticleManager.h */,
+				3C1E9E232070C04700A96073 /* TubeArticleManager.m */,
+				3C3CF761208AE99B0009E787 /* UserSimilarity.h */,
+				3C3CF762208AE99B0009E787 /* UserSimilarity.m */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		3CB2E1A5207F434400D7F3C6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3CB2E1A6207F435C00D7F3C6 /* TubeUserManager.h */,
+				3CB2E1A7207F435C00D7F3C6 /* TubeUserManager.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		3CBC3DA32046F65900C5C6CD = {
+			isa = PBXGroup;
+			children = (
+				3CBC3DAE2046F65900C5C6CD /* TubeBookServer */,
+				3CBC3DAD2046F65900C5C6CD /* Products */,
+				436B7ABDF369908500B09318 /* Pods */,
+				70D1881D4DD6721E8D0DC8E4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3CBC3DAD2046F65900C5C6CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CBC3DAC2046F65900C5C6CD /* TubeBookServer */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CBC3DAE2046F65900C5C6CD /* TubeBookServer */ = {
+			isa = PBXGroup;
+			children = (
+				3CDFF55D20835D0400E345E2 /* Util */,
+				3CB2E1A5207F434400D7F3C6 /* User */,
+				3C1E9E1E2070BD5F00A96073 /* Article */,
+				3CBC3DC22048EE9D00C5C6CD /* DbHelper */,
+				3CBC3DC120483EF600C5C6CD /* Register */,
+				3CBC3DC020483EEE00C5C6CD /* Login */,
+				3CBC3DBC20483D2300C5C6CD /* Socket */,
+				3CBC3DAF2046F65900C5C6CD /* main.m */,
+				3CBC3DBD20483D4F00C5C6CD /* TubeSDK.h */,
+				3CBC3DBE20483D4F00C5C6CD /* TubeSDK.m */,
+			);
+			path = TubeBookServer;
+			sourceTree = "<group>";
+		};
+		3CBC3DBC20483D2300C5C6CD /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				3CBC3DCC204A7C5000C5C6CD /* SocketModel */,
+				3CBC3DB62046F74D00C5C6CD /* SocketManager.h */,
+				3CBC3DB72046F74D00C5C6CD /* SocketManager.m */,
+				3CBC3DB9204830DE00C5C6CD /* TubeServerSocketSDK.h */,
+				3CBC3DBA204830DE00C5C6CD /* TubeServerSocketSDK.m */,
+				3C1E9E252070C06E00A96073 /* BaseTubeManager.h */,
+				3C1E9E262070C06E00A96073 /* BaseTubeManager.m */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		3CBC3DC020483EEE00C5C6CD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3CBC3DC620492E6300C5C6CD /* LoginManager.h */,
+				3CBC3DC720492E6300C5C6CD /* LoginManager.m */,
+				3CBC3DC92049589B00C5C6CD /* LoginSDK.h */,
+				3CBC3DCA2049589B00C5C6CD /* LoginSDK.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3CBC3DC120483EF600C5C6CD /* Register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		3CBC3DC22048EE9D00C5C6CD /* DbHelper */ = {
+			isa = PBXGroup;
+			children = (
+				3CBC3DC32048EEBE00C5C6CD /* DBHelper.h */,
+				3CBC3DC42048EEBE00C5C6CD /* DBHelper.m */,
+			);
+			path = DbHelper;
+			sourceTree = "<group>";
+		};
+		3CBC3DCC204A7C5000C5C6CD /* SocketModel */ = {
+			isa = PBXGroup;
+			children = (
+				3CBC3DCD204A7C5000C5C6CD /* ProtocolConst.h */,
+				3CBC3DCE204A7C5000C5C6CD /* TubeAddress.h */,
+				3CBC3DD2204A7C5000C5C6CD /* TubeAddress.m */,
+				3CBC3DD3204A7C5000C5C6CD /* BaseProtocolHeader.h */,
+				3CBC3DCF204A7C5000C5C6CD /* BaseProtocolHeader.m */,
+				3CBC3DD5204A7C5000C5C6CD /* BaseProtocolContent.h */,
+				3CBC3DD0204A7C5000C5C6CD /* BaseProtocolContent.m */,
+				3CBC3DD4204A7C5000C5C6CD /* BaseSocketPackage.h */,
+				3CBC3DD1204A7C5000C5C6CD /* BaseSocketPackage.m */,
+			);
+			path = SocketModel;
+			sourceTree = "<group>";
+		};
+		3CDFF55D20835D0400E345E2 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3CDFF55E20835D1300E345E2 /* TimeUtil.h */,
+				3CDFF55F20835D1300E345E2 /* TimeUtil.m */,
+				3C3CF75E208AE3A60009E787 /* PriorityQueue.h */,
+				3C3CF75F208AE3A60009E787 /* PriorityQueue.mm */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		436B7ABDF369908500B09318 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A70BE34FFD1F717461614390 /* Pods-TubeBookServer.debug.xcconfig */,
+				CB0C68EC658D0705D0898F35 /* Pods-TubeBookServer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		70D1881D4DD6721E8D0DC8E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1AA91D587477DB78E00740B /* libPods-TubeBookServer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3CBC3DAB2046F65900C5C6CD /* TubeBookServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CBC3DB32046F65900C5C6CD /* Build configuration list for PBXNativeTarget "TubeBookServer" */;
+			buildPhases = (
+				2C8E114D3370418D120FEBC3 /* [CP] Check Pods Manifest.lock */,
+				3CBC3DA82046F65900C5C6CD /* Sources */,
+				3CBC3DA92046F65900C5C6CD /* Frameworks */,
+				3CBC3DAA2046F65900C5C6CD /* CopyFiles */,
+				A4549B5AEB4E832782D5ED3E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TubeBookServer;
+			productName = TubeBookServer;
+			productReference = 3CBC3DAC2046F65900C5C6CD /* TubeBookServer */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3CBC3DA42046F65900C5C6CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "柯建芳";
+				TargetAttributes = {
+					3CBC3DAB2046F65900C5C6CD = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 3CBC3DA72046F65900C5C6CD /* Build configuration list for PBXProject "TubeBookServer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3CBC3DA32046F65900C5C6CD;
+			productRefGroup = 3CBC3DAD2046F65900C5C6CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3CBC3DAB2046F65900C5C6CD /* TubeBookServer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C8E114D3370418D120FEBC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TubeBookServer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4549B5AEB4E832782D5ED3E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TubeBookServer/Pods-TubeBookServer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3CBC3DA82046F65900C5C6CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CBC3DD6204A96C200C5C6CD /* TubeAddress.m in Sources */,
+				3C3CF760208AE3A60009E787 /* PriorityQueue.mm in Sources */,
+				3CBC3DD7204A96C200C5C6CD /* BaseProtocolHeader.m in Sources */,
+				3CDFF56020835D1300E345E2 /* TimeUtil.m in Sources */,
+				3CBC3DD8204A96C200C5C6CD /* BaseProtocolContent.m in Sources */,
+				3CBC3DD9204A96C200C5C6CD /* BaseSocketPackage.m in Sources */,
+				3C3CF763208AE99B0009E787 /* UserSimilarity.m in Sources */,
+				3CBC3DCB2049589B00C5C6CD /* LoginSDK.m in Sources */,
+				3CBC3DB82046F74D00C5C6CD /* SocketManager.m in Sources */,
+				3CBC3DC52048EEBE00C5C6CD /* DBHelper.m in Sources */,
+				3CBC3DB02046F65900C5C6CD /* main.m in Sources */,
+				3CBC3DC820492E6300C5C6CD /* LoginManager.m in Sources */,
+				3CBC3DBF20483D4F00C5C6CD /* TubeSDK.m in Sources */,
+				3C1E9E242070C04700A96073 /* TubeArticleManager.m in Sources */,
+				3CBC3DBB204830DE00C5C6CD /* TubeServerSocketSDK.m in Sources */,
+				3CB2E1A8207F435C00D7F3C6 /* TubeUserManager.m in Sources */,
+				3C1E9E272070C06E00A96073 /* BaseTubeManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3CBC3DB12046F65900C5C6CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3CBC3DB22046F65900C5C6CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3CBC3DB42046F65900C5C6CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A70BE34FFD1F717461614390 /* Pods-TubeBookServer.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3G6Y674Y5K;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CocoaAsyncSocket\"",
+					"-framework",
+					"\"CoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-L/usr/local/mysql/lib",
+					"-lmysqlclient",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/local/mysql/include;
+			};
+			name = Debug;
+		};
+		3CBC3DB52046F65900C5C6CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB0C68EC658D0705D0898F35 /* Pods-TubeBookServer.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3G6Y674Y5K;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CocoaAsyncSocket\"",
+					"-framework",
+					"\"CoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-L/usr/local/mysql/lib",
+					"-lmysqlclient",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /usr/local/mysql/include;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3CBC3DA72046F65900C5C6CD /* Build configuration list for PBXProject "TubeBookServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CBC3DB12046F65900C5C6CD /* Debug */,
+				3CBC3DB22046F65900C5C6CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CBC3DB32046F65900C5C6CD /* Build configuration list for PBXNativeTarget "TubeBookServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CBC3DB42046F65900C5C6CD /* Debug */,
+				3CBC3DB52046F65900C5C6CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3CBC3DA42046F65900C5C6CD /* Project object */;
+}
