@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3C1E9E242070C04700A96073 /* TubeArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E9E232070C04700A96073 /* TubeArticleManager.m */; };
 		3C1E9E272070C06E00A96073 /* BaseTubeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E9E262070C06E00A96073 /* BaseTubeManager.m */; };
+		3C339B12209D84E10033195B /* CKContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C339B10209D84E10033195B /* CKContent.m */; };
+		3C339B15209D85090033195B /* CKDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C339B13209D85090033195B /* CKDataType.m */; };
+		3C339B18209D85230033195B /* UserCommentContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C339B17209D85230033195B /* UserCommentContent.m */; };
 		3C3CF760208AE3A60009E787 /* PriorityQueue.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CF75F208AE3A60009E787 /* PriorityQueue.mm */; };
 		3C3CF763208AE99B0009E787 /* UserSimilarity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CF762208AE99B0009E787 /* UserSimilarity.m */; };
 		3CB2E1A8207F435C00D7F3C6 /* TubeUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2E1A7207F435C00D7F3C6 /* TubeUserManager.m */; };
@@ -44,6 +47,12 @@
 		3C1E9E232070C04700A96073 /* TubeArticleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TubeArticleManager.m; sourceTree = "<group>"; };
 		3C1E9E252070C06E00A96073 /* BaseTubeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTubeManager.h; sourceTree = "<group>"; };
 		3C1E9E262070C06E00A96073 /* BaseTubeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTubeManager.m; sourceTree = "<group>"; };
+		3C339B10209D84E10033195B /* CKContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKContent.m; sourceTree = "<group>"; };
+		3C339B11209D84E10033195B /* CKContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKContent.h; sourceTree = "<group>"; };
+		3C339B13209D85090033195B /* CKDataType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKDataType.m; sourceTree = "<group>"; };
+		3C339B14209D85090033195B /* CKDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDataType.h; sourceTree = "<group>"; };
+		3C339B16209D85230033195B /* UserCommentContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentContent.h; sourceTree = "<group>"; };
+		3C339B17209D85230033195B /* UserCommentContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentContent.m; sourceTree = "<group>"; };
 		3C3CF75E208AE3A60009E787 /* PriorityQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueue.h; sourceTree = "<group>"; };
 		3C3CF75F208AE3A60009E787 /* PriorityQueue.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PriorityQueue.mm; sourceTree = "<group>"; };
 		3C3CF761208AE99B0009E787 /* UserSimilarity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSimilarity.h; sourceTree = "<group>"; };
@@ -95,6 +104,12 @@
 		3C1E9E1E2070BD5F00A96073 /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				3C339B11209D84E10033195B /* CKContent.h */,
+				3C339B10209D84E10033195B /* CKContent.m */,
+				3C339B14209D85090033195B /* CKDataType.h */,
+				3C339B13209D85090033195B /* CKDataType.m */,
+				3C339B16209D85230033195B /* UserCommentContent.h */,
+				3C339B17209D85230033195B /* UserCommentContent.m */,
 				3C1E9E222070C04700A96073 /* TubeArticleManager.h */,
 				3C1E9E232070C04700A96073 /* TubeArticleManager.m */,
 				3C3CF761208AE99B0009E787 /* UserSimilarity.h */,
@@ -243,7 +258,6 @@
 				3CBC3DA82046F65900C5C6CD /* Sources */,
 				3CBC3DA92046F65900C5C6CD /* Frameworks */,
 				3CBC3DAA2046F65900C5C6CD /* CopyFiles */,
-				A4549B5AEB4E832782D5ED3E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -305,21 +319,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A4549B5AEB4E832782D5ED3E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TubeBookServer/Pods-TubeBookServer-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -331,6 +330,8 @@
 				3C3CF760208AE3A60009E787 /* PriorityQueue.mm in Sources */,
 				3CBC3DD7204A96C200C5C6CD /* BaseProtocolHeader.m in Sources */,
 				3CDFF56020835D1300E345E2 /* TimeUtil.m in Sources */,
+				3C339B18209D85230033195B /* UserCommentContent.m in Sources */,
+				3C339B15209D85090033195B /* CKDataType.m in Sources */,
 				3CBC3DD8204A96C200C5C6CD /* BaseProtocolContent.m in Sources */,
 				3CBC3DD9204A96C200C5C6CD /* BaseSocketPackage.m in Sources */,
 				3C3CF763208AE99B0009E787 /* UserSimilarity.m in Sources */,
@@ -342,6 +343,7 @@
 				3CBC3DBF20483D4F00C5C6CD /* TubeSDK.m in Sources */,
 				3C1E9E242070C04700A96073 /* TubeArticleManager.m in Sources */,
 				3CBC3DBB204830DE00C5C6CD /* TubeServerSocketSDK.m in Sources */,
+				3C339B12209D84E10033195B /* CKContent.m in Sources */,
 				3CB2E1A8207F435C00D7F3C6 /* TubeUserManager.m in Sources */,
 				3C1E9E272070C06E00A96073 /* BaseTubeManager.m in Sources */,
 			);

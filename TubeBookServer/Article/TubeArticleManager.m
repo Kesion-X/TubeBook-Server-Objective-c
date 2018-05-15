@@ -9,6 +9,7 @@
 #import "TubeArticleManager.h"
 #import "TimeUtil.h"
 #import "UserSimilarity.h"
+#import "UserCommentContent.h"
 
 @interface TubeArticleManager ()
 
@@ -38,44 +39,684 @@
         NSDictionary *dic =  [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *headDir = [dic objectForKey:@"head"];
         NSString *method = [headDir objectForKey:PROTOCOL_METHOD];
-        if ( [method isEqualToString:ARTICLE_PROTOCOL_TAG] ) {
+        if ( [method isEqualToString:ARTICLE_PROTOCOL_TAG]) {
             [self responseTagList:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_PROTOCOL_ADD_TAG] ) {
+        } else if ([method isEqualToString:ARTICLE_PROTOCOL_ADD_TAG]) {
             [self responseAddTag:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_TOPIC_TITLE_LIST] ) {
+        } else if ([method isEqualToString:ARTICLE_TOPIC_TITLE_LIST]) {
             [self responseTopicList:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_UPLOAD] ) {
+        } else if ([method isEqualToString:ARTICLE_UPLOAD]) {
             [self responseUpLoadArticle:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_SET_TAGS] ) {
+        } else if ([method isEqualToString:ARTICLE_SET_TAGS]) {
             [self respsonseSetTags:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_SET_TAB] ) {
+        } else if ([method isEqualToString:ARTICLE_SET_TAB]) {
             [self respsonseSetTab:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_SERIAL_TITLE_LIST] ) {
+        } else if ([method isEqualToString:ARTICLE_SERIAL_TITLE_LIST]) {
             [self respsonseSerialList:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_NEW_LIST] ) {
+        } else if ([method isEqualToString:ARTICLE_NEW_LIST]) {
             [self responseNewArticleList:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_TOPIC_DETAIL_INFO] ) {
+        } else if ([method isEqualToString:ARTICLE_TOPIC_DETAIL_INFO]) {
             [self responseArticleTopicDetialInfo:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_SERIAL_DETAIL_INFO] ) {
+        } else if ([method isEqualToString:ARTICLE_SERIAL_DETAIL_INFO]) {
             [self responseArticleSerialDetailInfo:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_ID_DETAIL_INFO] ) {
+        } else if ([method isEqualToString:ARTICLE_ID_DETAIL_INFO]) {
             [self responseArticleDetailInfoByid:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_SET_LIKE] ) {
+        } else if ([method isEqualToString:ARTICLE_SET_LIKE]) {
             [self responseSetArticleLikeStatus:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_LIKE_NOT_REVIEW_COUNT] ) {
+        } else if ([method isEqualToString:ARTICLE_LIKE_NOT_REVIEW_COUNT]) {
             [self responseArticleNotLikeReviewCount:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_CREATE_TOPIC_OR_SERIAL_TAB] ) {
+        } else if ([method isEqualToString:ARTICLE_CREATE_TOPIC_OR_SERIAL_TAB]) {
             [self responseCreateTopicOrSerialTab:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_RECOMMEND_BY_HOT_LIST] ) {
+        } else if ([method isEqualToString:ARTICLE_RECOMMEND_BY_HOT_LIST]) {
             [self responsAritcleRecommedByHotList:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_RECOMMEND_BY_USERCF_LIST] ) {
+        } else if ([method isEqualToString:ARTICLE_RECOMMEND_BY_USERCF_LIST]) {
             [self responsAritcleRecommedByUserCFList:dic socket:sock];
-        } else if ( [method isEqualToString:ARTICLE_LIKE_STATUS] ) {
+        } else if ([method isEqualToString:ARTICLE_LIKE_STATUS]) {
             [self responsAritcleLikeStatus:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_TAB_LIKE_STATUS]) {
+            [self responsAritcleTabLikeStatus:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_TAB_SET_LIKE]) {
+            [self responseSetArticleTabLikeStatus:dic socket:sock];
+        } else if ([method isEqualToString:ARITCLE_USER_LIKE_LIST]) {
+            [self responseUserLikeArticleList:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_COMMENT_TO_USER]) {
+            [self responseArticleCommentToUser:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_COMMENT_LIST]) {
+            [self responseArticleCommentList:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_USER_COMMENT_TO_USER]) {
+            [self requestArticleUserCommentToUser:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_USER_COMMENT_TO_USER_LIST]) {
+            [self requestArticleUserCommentToUserList:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_COMMENT_NOT_REVIEW_COUNT]) {
+            [self requestArticleCommentNotReviewCount:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_RECEIVE_COMMENT_LIST]) {
+            [self requestArticleReceiveCommentList:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_COMMENT_FROM_USER_TO_USER_LIST]) {
+            [self requestArticleCommentFromUserToUserList:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_COMMENT_BY_CID]) {
+            [self requestArticleCommentByCid:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_SET_COMMENT_REVIEW_STATUS]) {
+            [self requestArticleCommentTypeStatus:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_RECEIVE_USER_LIKE_ARTICLE_LIST]) {
+            [self requestArticleReceiveUserLikeArticleList:dic socket:sock];
+        } else if ([method isEqualToString:ARTICLE_USER_CREATE_ARTICLE_COUNT]) {
+            [self requestArticleUserCreateArticleCount:dic socket:sock];
         }
         
-      
+
     }
+}
+
+- (void)requestArticleUserCreateArticleCount:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSString *uid = [contentDir objectForKey:@"uid"];
+    BOOL isOk = [[DBHelper sharedInstance] connectionDB];
+    NSInteger count = 0;
+    if (isOk) {
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select count(*) from article_table where userid = '%@'",uid] tableName:nil];
+        if (list) {
+            NSDictionary *dic = [list objectAtIndex:0];
+            count = [[dic objectForKey:@"count(*)"] integerValue];
+        }
+    }
+    NSString *status = @"fail";
+    if (isOk) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                @(count), @"count",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_USER_CREATE_ARTICLE_COUNT,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)requestArticleReceiveUserLikeArticleList:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSInteger index = [[contentDir objectForKey:@"index"] integerValue];
+    NSString *uid = [contentDir objectForKey:@"uid"];
+    NSMutableArray *mList = [[NSMutableArray alloc] init];
+    BOOL isOK = NO;
+    if ([[DBHelper sharedInstance] connectionDB]) {
+        isOK = YES;
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select at_user_like_table.*,title from at_user_like_table left "
+                                                                     " join article_table on at_user_like_table.atid = article_table.atid "
+                                                                     " where article_table.userid = '%@' and at_user_like_table.ishaved_review = 0 "
+                                                                     " and at_user_like_table.userid != '%@' order by (at_user_like_table.time) desc limit %lu,10;", uid, uid, index*10] tableName:nil];
+        if (list) {
+            [mList addObjectsFromArray:list];
+        }
+    }
+    NSString *status = @"fail";
+    if (isOK) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                mList, @"list",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_RECEIVE_USER_LIKE_ARTICLE_LIST,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)requestArticleCommentTypeStatus:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSInteger tid = [[contentDir objectForKey:@"tid"] integerValue];
+    CommentFromType commentfromType = [[contentDir objectForKey:@"commentType"] integerValue];
+    BOOL isOk = [[DBHelper sharedInstance] connectionDB];
+    if (isOk) {
+        if (commentfromType == CommentFromTypeArticle) {
+            if ([[DBHelper sharedInstance] updateWithTable:@"atcomment_table" keyAndVaule:[[NSDictionary alloc] initWithObjectsAndKeys:
+                                                                                           @(YES),@"ishaved_review",nil] where:[NSString stringWithFormat:@" id = %lu ",tid]] !=0) {
+                isOk = NO;
+            }
+        } else {
+            if ([[DBHelper sharedInstance] updateWithTable:@"at_user_comment_table" keyAndVaule:[[NSDictionary alloc] initWithObjectsAndKeys:
+                                                                                           @(YES),@"ishaved_review",nil] where:[NSString stringWithFormat:@" id = %lu ",tid]] !=0) {
+                isOk = NO;
+            }
+        }
+    }
+    NSString *status = @"fail";
+    if (isOk) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_SET_COMMENT_REVIEW_STATUS,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)requestArticleCommentByCid:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSInteger cid = [[contentDir objectForKey:@"cid"] integerValue];
+    BOOL isOk = [[DBHelper sharedInstance] connectionDB];
+    NSDictionary *commentContent  = nil;
+    if (isOk) {
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from atcomment_table left join article_table on atcomment_table.atid = article_table.atid where atcomment_table.id = %lu",cid] tableName:nil];
+        if (list) {
+            NSDictionary *dic = [list objectAtIndex:0];
+            commentContent = dic;
+        }
+
+    }
+    NSString *status = @"fail";
+    if (isOk) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                commentContent, @"commentContent",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_COMMENT_BY_CID,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)requestArticleCommentFromUserToUserList:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSInteger cid = [[contentDir objectForKey:@"cid"] integerValue];
+    NSString *fromUid = [contentDir objectForKey:@"fromUid"];
+    NSString *toUid = [contentDir objectForKey:@"toUid"];
+    NSInteger tid = [[contentDir objectForKey:@"tid"] integerValue];
+    NSInteger commentId = [[contentDir objectForKey:@"commentId"] integerValue];
+    CommentFromType commentType = [[contentDir objectForKey:@"commentType"] integerValue];
+    BOOL isOK = [[DBHelper sharedInstance] connectionDB];
+    NSMutableArray *mlist = [[NSMutableArray alloc] init];
+    if (isOK && commentType == CommentFromTypeArticle) {
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where cid = %lu and ((receive_userid='%@' && send_userid='%@') or (receive_userid='%@' && send_userid='%@')) order by (comment_time) desc", cid, fromUid, toUid, toUid, fromUid] tableName:nil];
+        if (list) {
+            [mlist addObjectsFromArray:list];
+        }
+    }
+//    if (isOK) {
+//
+//        if (commentId == -1) {
+//            if (commentType == CommentFromTypeArticle) {
+//                NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where cid = %lu and ((receive_userid='%@' && send_userid='%@') or (receive_userid='%@' && send_userid='%@')) order by (comment_time) desc", cid, fromUid, toUid, toUid, fromUid] tableName:nil];
+//                if (list) {
+//                    [mlist addObjectsFromArray:list];
+//                }
+//
+//            } else {
+//                NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where cid = %lu and id=%lu order by (comment_time) asc", cid, tid] tableName:nil];
+//                if (list) {
+//                    NSDictionary *dic = [list objectAtIndex:0];
+//                    [mlist insertObject:dic atIndex:0];
+//                }
+//
+//                NSInteger mmCommentId = tid;
+//                NSMutableArray *clist = [[NSMutableArray alloc] init];
+//                [clist addObject:@(mmCommentId)];
+//                while (clist.count>0) {
+//                    mmCommentId = [[clist objectAtIndex:0] integerValue];
+//                    NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where cid = %lu and ((receive_userid='%@' && send_userid='%@') or (receive_userid='%@' && send_userid='%@')) and comment_id=%lu order by (comment_time) asc", cid, fromUid, toUid, toUid, fromUid, mmCommentId] tableName:nil];
+//                    if (list) {
+//                        [mlist addObjectsFromArray:list];
+//                        for (NSDictionary *dic in list) {
+//                            mmCommentId = [[dic objectForKey:@"id"] integerValue];
+//                            [clist addObject:@(mmCommentId)];
+//                        }
+//                    }
+//                    [clist removeObjectAtIndex:0];
+//                }
+//            }
+//
+//        } else {
+//            NSInteger mCommentId = commentId;
+//            while (mCommentId!=-1) {
+//                NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where cid = %lu and id=%lu order by (comment_time) asc", cid, mCommentId] tableName:nil];
+//                if (list) {
+//                    NSDictionary *dic = [list objectAtIndex:0];
+//                    mCommentId = [[dic objectForKey:@"comment_id"] integerValue];
+//                    [mlist insertObject:dic atIndex:0];
+//                } else {
+//                    break;
+//                }
+//            }
+//            NSInteger mmCommentId = commentId;
+//            NSMutableArray *clist = [[NSMutableArray alloc] init];
+//            [clist addObject:@(mmCommentId)];
+//            while (clist.count>0) {
+//                mmCommentId = [[clist objectAtIndex:0] integerValue];
+//                NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where cid = %lu and ((receive_userid='%@' && send_userid='%@') or (receive_userid='%@' && send_userid='%@')) and comment_id=%lu order by (comment_time) asc", cid, fromUid, toUid, toUid, fromUid, mmCommentId] tableName:nil];
+//                if (list) {
+//                    [mlist addObjectsFromArray:list];
+//                    for (NSDictionary *dic in list) {
+//                        mmCommentId = [[dic objectForKey:@"id"] integerValue];
+//                        [clist addObject:@(mmCommentId)];
+//                    }
+//                }
+//                [clist removeObjectAtIndex:0];
+//            }
+//        }
+//
+//    }
+    NSString *status = @"fail";
+    if (isOK) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                mlist, @"list",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_COMMENT_FROM_USER_TO_USER_LIST, PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)requestArticleReceiveCommentList:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSString *uid = [contentDir objectForKey:@"uid"];
+    NSInteger index = [[contentDir objectForKey:@"index"] integerValue];
+    BOOL isOk = [[DBHelper sharedInstance] connectionDB];
+    NSMutableArray *mlist = [[NSMutableArray alloc] init];
+    NSMutableArray *requestList = [[NSMutableArray alloc] init];
+    if (isOk) {
+        NSArray *commentlist = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from atcomment_table where receive_userid = '%@' order by (comment_time) desc limit %lu,5;",uid, index*5] tableName:nil];
+        if (commentlist) {
+            [mlist addObjectsFromArray:commentlist];
+        }
+        NSArray *userCommentList = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where receive_userid = '%@' order by (comment_time) desc limit %lu,5;",uid, index*5] tableName:nil];
+        if (userCommentList) {
+            [mlist addObjectsFromArray:userCommentList];
+        }
+    }
+    for (NSDictionary *dic in mlist){
+        UserCommentContent *content = [[UserCommentContent alloc] init];
+        content.id = [[dic objectForKey:@"id"] integerValue];
+        content.userUid = [dic objectForKey:@"send_userid"];
+        content.toUid = [dic objectForKey:@"receive_userid"];
+        content.comment = [dic objectForKey:@"comment"];
+        content.atid = [dic objectForKey:@"atid"];
+        content.t_time = [[dic objectForKey:@"comment_time"] integerValue];
+        content.time = [TimeUtil getDateWithTime:content.t_time];
+        content.isReview = [[dic objectForKey:@"ishaved_review"] boolValue];
+        if ([dic objectForKey:@"cid"]) {
+            content.cid = [[dic objectForKey:@"cid"] integerValue];
+            content.commentId = [[dic objectForKey:@"comment_id"] integerValue];
+            content.commentFromType = CommentFromTypeArticleUser;
+        } else {
+            content.cid = [[dic objectForKey:@"id"] integerValue];
+            content.commentId = -1;
+            content.commentFromType = CommentFromTypeArticle;
+        }
+        if (content.atid && content.atid.length > 0) {
+            NSArray *aList = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select title from article_table where atid = '%@'",content.atid] tableName:nil];
+            if (aList) {
+                NSDictionary *adic = [aList objectAtIndex:0];
+                content.articleTitle = [adic objectForKey:@"title"];
+            }
+        }
+        [requestList addObject:content];
+    }
+    NSArray *sortedArray = [requestList sortedArrayUsingComparator:^NSComparisonResult(UserCommentContent *p1, UserCommentContent *p2){
+        if (p1.t_time < p2.t_time) {
+            return NSOrderedDescending;
+        }
+        return NSOrderedAscending;
+    }];
+    NSMutableArray *resultList = [[NSMutableArray alloc] init];
+    int i=0;
+    for (UserCommentContent *content in sortedArray) {
+        NSDictionary *dic = @{@"id":@(content.id),
+                              @"cid":@(content.cid),
+                              @"comment_id":@(content.commentId),
+                              @"atid":content.atid,
+                              @"send_userid":content.userUid,
+                              @"receive_userid":content.toUid,
+                              @"comment_time":content.time,
+                              @"t_comment_time":@(content.t_time),
+                              @"ishaved_review":@(content.isReview),
+                              @"comment_from_type":@(content.commentFromType),
+                              @"article_title":content.articleTitle,
+                              @"comment":content.comment
+                              };
+        NSLog(@"error  %d",i);
+        i++;
+        [resultList addObject:dic];
+    }
+    
+    NSString *status = @"fail";
+    if (isOk) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                resultList, @"list",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_RECEIVE_COMMENT_LIST,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+    
+}
+
+- (void)requestArticleCommentNotReviewCount:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSString *uid = [contentDir objectForKey:@"uid"];
+    BOOL isOk = [[DBHelper sharedInstance] connectionDB];
+    NSInteger count = 0;
+    if (isOk) {
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select count(*) from atcomment_table where receive_userid = '%@' and ishaved_review=0;",uid] tableName:nil];
+        if (list) {
+            NSDictionary *dic = [list objectAtIndex:0];
+            count = [[dic objectForKey:@"count(*)"] integerValue];
+        }
+        NSArray *userCList = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select count(*) from at_user_comment_table where receive_userid = '%@' and ishaved_review=0;", uid] tableName:nil];
+        if (userCList) {
+            NSDictionary *dic = [userCList objectAtIndex:0];
+            count += [[dic objectForKey:@"count(*)"] integerValue];
+        }
+    }
+    NSString *status = @"fail";
+    if (isOk) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                @(count), @"count",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_COMMENT_NOT_REVIEW_COUNT,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)requestArticleUserCommentToUserList:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSInteger cid = [[contentDir objectForKey:@"cid"] integerValue];
+    NSInteger index = [[contentDir objectForKey:@"index"] integerValue];
+    BOOL isOK = [[DBHelper sharedInstance] connectionDB];
+    NSMutableArray *mlist = [[NSMutableArray alloc] init];
+    if (isOK) {
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_comment_table where cid = %lu order by (comment_time) desc limit %lu,10;", cid, index*10] tableName:nil];
+        if (list) {
+            [mlist addObjectsFromArray:list];
+        }
+    }
+    NSString *status = @"fail";
+    if (isOK) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                mlist, @"list",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_USER_COMMENT_TO_USER_LIST,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)requestArticleUserCommentToUser:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSString *atid = [contentDir objectForKey:@"atid"];
+    NSString *fromUid = [contentDir objectForKey:@"fromUid"];
+    NSString *toUid = [contentDir objectForKey:@"toUid"];
+    NSString *message = [contentDir objectForKey:@"message"];
+    NSInteger cid = [[contentDir objectForKey:@"cid"] integerValue];
+    NSInteger commentId =  [[contentDir objectForKey:@"commentId"] integerValue];
+    BOOL isOK = [[DBHelper sharedInstance] connectionDB];
+    if (isOK) {
+        if ([[DBHelper sharedInstance] insterWithTable:@"at_user_comment_table" keys:@[@"cid",@"atid", @"receive_userid", @"send_userid", @"comment", @"comment_time", @"ishaved_review", @"comment_id"] values:@[@(cid), atid, toUid, fromUid, message, @([TimeUtil getNowTimeTimest]), @(NO), @(commentId)]] == 0) {
+            isOK = YES;
+            
+            [self sendNotificationMessageWithreceiveUid:toUid
+                                             sendSocket:sock
+                                               protocol:IM_PROTOCOL
+                                                 method:IM_NOTIFICATION_MESSAGE
+                                                  title:[NSString stringWithFormat:@"%@回复了你",fromUid]
+                                                content:[NSString stringWithFormat:@"回复了你: %@", message]];
+        } else {
+            isOK = NO;
+        }
+    }
+    NSString *status = @"fail";
+    if (isOK) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_USER_COMMENT_TO_USER,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)responseArticleCommentList:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSString *atid = [contentDir objectForKey:@"atid"];
+    NSInteger index = [[contentDir objectForKey:@"index"] integerValue];
+    BOOL isOK = [[DBHelper sharedInstance] connectionDB];
+    NSMutableArray *mlist = [[NSMutableArray alloc] init];
+    if (isOK) {
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@" select atcomment_table.id,atcomment_table.atid,atcomment_table.receive_userid,atcomment_table.send_userid,atcomment_table.comment,atcomment_table.comment_time,count(cid) from atcomment_table "
+                                                                     " left join at_user_comment_table  on at_user_comment_table.cid=atcomment_table.id "
+                                                                     " where atcomment_table.atid='%@' "
+                                                                     " group by  id,atid,receive_userid,send_userid,comment,comment_time,cid "
+                                                                     " order by (comment_time) desc limit %lu,10; ", atid,index*10] tableName:nil];
+        if (list) {
+            [mlist addObjectsFromArray:list];
+        }
+    }
+    NSString *status = @"fail";
+    if (isOK) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                mlist, @"list",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_COMMENT_LIST,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)responseArticleCommentToUser:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSString *atid = [contentDir objectForKey:@"atid"];
+    NSString *fromUid = [contentDir objectForKey:@"fromUid"];
+    NSString *toUid = [contentDir objectForKey:@"toUid"];
+    NSString *message = [contentDir objectForKey:@"message"];
+    BOOL isOK = [[DBHelper sharedInstance] connectionDB];
+    if (isOK) {
+        if ([[DBHelper sharedInstance] insterWithTable:@"atcomment_table" keys:@[@"atid", @"receive_userid", @"send_userid", @"comment", @"comment_time", @"ishaved_review"] values:@[atid, toUid, fromUid, message, @([TimeUtil getNowTimeTimest]), @(NO)]] == 0) {
+            isOK = YES;
+ 
+            NSArray *aList = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from article_table where atid='%@'", atid] tableName:@"article_table"];
+            NSDictionary *aDic = [aList objectAtIndex:0];
+            NSString *uid = [aDic objectForKey:@"userid"];
+            NSString *articleTitle = [aDic objectForKey:@"title"];
+            [self sendNotificationMessageWithreceiveUid:uid
+                                             sendSocket:sock
+                                               protocol:IM_PROTOCOL
+                                                 method:IM_NOTIFICATION_MESSAGE
+                                                  title:[NSString stringWithFormat:@"%@评论了你的文章",fromUid]
+                                                content:[NSString stringWithFormat:@"评论你的文章《%@》: %@", articleTitle, message]];
+        }
+    }
+    NSString *status = @"fail";
+    if (isOK) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_COMMENT_TO_USER,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)responseUserLikeArticleList:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSInteger index = [[contentDir objectForKey:@"index"] integerValue];
+    NSString *uid = [contentDir objectForKey:@"uid"];
+    NSMutableArray *mList = [[NSMutableArray alloc] init];
+    BOOL isOK = NO;
+    if ([[DBHelper sharedInstance] connectionDB]) {
+        isOK = YES;
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select article_table.* from at_user_like_table "
+                                                                     " left join article_table on at_user_like_table.atid=article_table.atid "
+                                                                     " where at_user_like_table.userid = '%@' limit %lu,10;", uid, index*10] tableName:nil];
+        if (list) {
+            [mList addObjectsFromArray:list];
+        }
+    }
+    NSString *status = @"fail";
+    if (isOK) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                mList, @"list",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARITCLE_USER_LIKE_LIST,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+    
+}
+
+- (void)responseSetArticleTabLikeStatus:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSInteger tabid = [[contentDir objectForKey:@"tabid"] integerValue];
+    NSString *uid = [contentDir objectForKey:@"uid"];
+    BOOL likeStatus = [[contentDir objectForKey:@"likeStatus"] boolValue];
+    ArticleType articleType = [[contentDir objectForKey:@"articleType"] integerValue];
+    BOOL isOk = NO;
+    if ([[DBHelper sharedInstance] connectionDB]) {
+        isOk = YES;
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from user_attent_tab_table where tabid=%lu and userid='%@' ", tabid,uid] tableName:@"user_attent_tab_table"];
+        if (list) {
+            if (!likeStatus) {
+                [[DBHelper sharedInstance] delectWithTable:@"user_attent_tab_table" where:[NSString stringWithFormat:@" tabid=%lu and userid='%@' ", tabid,uid]];
+            }
+        } else {
+            if (likeStatus) {
+                [[DBHelper sharedInstance] insterWithTable:@"user_attent_tab_table" keys:@[@"tabid",@"userid",@"type"] values:@[@(tabid),uid,@(articleType)]];
+            }
+        }
+    }
+    NSString *status = @"fail";
+    if ( isOk ) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_TAB_SET_LIKE,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
+}
+
+- (void)responsAritcleTabLikeStatus:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
+{
+    NSDictionary *contentDir = [dataDic objectForKey:@"content"];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
+    NSString *uid = [contentDir objectForKey:@"uid"];
+    NSInteger tabid = [[contentDir objectForKey:@"tabid"] integerValue];
+    BOOL isOK = [[DBHelper sharedInstance] connectionDB];
+    BOOL isLike = NO;
+    if ( isOK ) {
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@" select * from user_attent_tab_table where tabid = %lu and userid = '%@';", tabid, uid] tableName:nil];
+        if (list) {
+            isLike = YES;
+        }
+    }
+    NSString *status = @"fail";
+    if ( isOK ) {
+        status = @"success";
+    }
+    NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @(tag), @"tag",
+                                @(isLike), @"isLike",
+                                status, @"status",nil];
+    NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             ARTICLE_PROTOCOL, PROTOCOL_NAME,
+                             ARTICLE_TAB_LIKE_STATUS,PROTOCOL_METHOD,
+                             nil];
+    BaseSocketPackage *pg = [[BaseSocketPackage alloc] initWithHeadDic:headDic contentDic:contentDic];
+    [self.tubeServerSocketSDK sendData:sock data:pg.data];
+    [[DBHelper sharedInstance] disconnectionDB];
 }
 
 - (void)responsAritcleLikeStatus:(NSDictionary *)dataDic socket:(GCDAsyncSocket *)sock
@@ -241,14 +882,15 @@
                 articleTypeSql = [articleTypeSql stringByAppendingString:[NSString stringWithFormat:@" atab_table.tabtype=%lu ",ArticleTypeTopic]];
             }
         }
-        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@" select at_user_review_table.atid,title,tabtype,tabid,at_user_review_table.userid,simirity_prime,createtime,description,articlepic from at_user_review_table "
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@" select at_user_review_table.atid,title,tabtype,tabid,article_table.userid,simirity_prime,createtime,description,articlepic,review_count from at_user_review_table "
                                                                      " left join article_table on at_user_review_table.atid = article_table.atid "
                                                                      " left join atab_table on at_user_review_table.atid = atab_table.atid "
                                                                      " left join user_simirity_table on at_user_review_table.userid = user_simirity_table.otheruid "
                                                                      " where at_user_review_table.userid in (select otheruid from user_simirity_table where uid='%@') "
-                                                                     " and at_user_review_table.atid not in (select atid from at_user_review_table where userid='%@') "
-                                                                     " and (%@) "
-                                                                     " group by atid,title,tabtype,tabid,userid,simirity_prime,createtime,description,articlepic limit %lu,10;", uid, uid, articleTypeSql, index*10] tableName:nil];
+                                                                     " and (%@) order by review_count"
+                                                                     " limit %lu,10;", uid, articleTypeSql, index*10] tableName:nil];
+         //    " and at_user_review_table.atid not in (select atid from at_user_review_table where userid='%@') "
+        //group by atid,title,tabtype,tabid,userid,simirity_prime,createtime,description,articlepic
         if (list) {
             [mlist addObjectsFromArray:list];
         }
@@ -260,9 +902,25 @@
             [mlist addObjectsFromArray:list];
         }
     }
+    NSMutableArray *reList = [[NSMutableArray alloc] init];
+    for (NSDictionary *d in mlist) {
+        NSString *dAtid = [d objectForKey:@"atid"];
+        BOOL h = NO;
+        for (NSDictionary *reD in reList) {
+            NSString *reAtid = [reD objectForKey:@"atid"];
+            if ([dAtid isEqualToString:reAtid]) {
+                h = YES;
+                break;
+            }
+        }
+        if (!h) {
+            [reList addObject:d];
+        }
+    }
+    
     NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                 @(tag), @"tag",
-                                mlist, @"list",
+                                reList, @"list",
                                 status, @"status",nil];
     NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                              ARTICLE_PROTOCOL, PROTOCOL_NAME,
@@ -386,7 +1044,7 @@
             }
         } else if ( fouseType == FouseTypeAll ) {
             NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@" select article_table.atid,article_table.userid,title,description,createtime,articlepic,body,tabtype,tabid,sum(review_count) from article_table "
-                                                                         " right join at_user_review_table on article_table.atid = at_user_review_table.atid "
+                                                                         " left join at_user_review_table on article_table.atid = at_user_review_table.atid "
                                                                          " right join atab_table on article_table.atid = atab_table.atid "
                                                                          " where (%@) "
                                                                          " group by atid,userid,title,description,createtime,articlepic,body,tabtype,tabid "
@@ -475,10 +1133,10 @@
     BOOL isOk = NO;
     if ([[DBHelper sharedInstance] connectionDB]) {
         isOk = YES;
-        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_like_table where atid=%@ and userid='%@' ", atid,uid] tableName:@"at_user_like_table"];
+        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select * from at_user_like_table where atid='%@' and userid='%@' ", atid,uid] tableName:@"at_user_like_table"];
         if (list) {
             if (!likeStatus) {
-                [[DBHelper sharedInstance] delectWithTable:@"at_user_like_table" where:[NSString stringWithFormat:@" atid=%@ and userid='%@' ", atid,uid]];
+                [[DBHelper sharedInstance] delectWithTable:@"at_user_like_table" where:[NSString stringWithFormat:@" atid='%@' and userid='%@' ", atid,uid]];
             }
         } else {
             if (likeStatus) {
@@ -641,10 +1299,12 @@
     NSInteger index = [[contentDir objectForKey:@"index"] integerValue];
     ArticleType articleType = [[contentDir objectForKey:@"articleType"] integerValue];
     NSInteger tabid = [[contentDir objectForKey:@"tabid"] integerValue];
+    NSInteger tag = [[contentDir objectForKey:@"tag"] integerValue];
     
     if ( !( articleType & ArticleTypeMornal ) && !( articleType & ArticleTypeSerial )  && !( articleType & ArticleTypeTopic ) ) {
         NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     responseList, @"list",
+                                    tag, @"tag",
                                     @"fail", @"status",nil];
         NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  ARTICLE_PROTOCOL, PROTOCOL_NAME,
@@ -732,6 +1392,7 @@
         
         NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     responseList, @"list",
+                                    @(tag), @"tag",
                                     @"success", @"status",nil];
         NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  ARTICLE_PROTOCOL, PROTOCOL_NAME,
@@ -744,6 +1405,7 @@
     } else {
         NSDictionary *contentDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     responseList, @"list",
+                                    @(tag), @"tag",
                                     @"fail", @"status",nil];
         NSDictionary *headDic = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  ARTICLE_PROTOCOL, PROTOCOL_NAME,
@@ -927,12 +1589,12 @@
     if ([[DBHelper sharedInstance] connectionDB]) {
         if ( uid!=nil ) {
             if (fouseType == FouseTypeAttrent) {
-                NSArray *tablist = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select(tabid) from user_attent_tab_table where type=%lu and userid='%@' limit %lu,10;",type,uid,index*10] tableName:@"user_attent_tab_table"];
+                NSArray *tablist = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select(tabid) from user_attent_tab_table where type=%lu and userid='%@' limit %lu,15;",type,uid,index*15] tableName:@"user_attent_tab_table"];
                 if (tablist) {
                     
                     for (NSDictionary *dic in tablist) {
                         NSInteger tabId = [[dic objectForKey:@"tabid"] integerValue];
-                        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select *from tab_table where id=%lu;", tabId] tableName:@"tab_table"];
+                        NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select *from tab_table where id=%lu order by (create_time) desc ;", tabId] tableName:@"tab_table"];
                         if (list) {
                             [lists addObjectsFromArray:list];
                         }
@@ -940,14 +1602,14 @@
                     }
                 }
             } else if ( fouseType == FouseTypeCreate ) {
-                NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select *from tab_table where type=%lu and create_userid = '%@' limit %lu,10;", type, uid, index*10] tableName:@"tab_table"];
+                NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select *from tab_table where type=%lu and create_userid = '%@'  order by (create_time) desc limit %lu,15;", type, uid, index*15] tableName:@"tab_table"];
                 if (!list) {
                     list = [[NSArray alloc] init];
                 }
                 [lists addObjectsFromArray:list];
             }
         } else {
-            NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select *from tab_table where type=%lu limit %lu,10;", type, index*10] tableName:@"tab_table"];
+            NSArray *list = [[DBHelper sharedInstance] fetchQuerySelect:[NSString stringWithFormat:@"select *from tab_table where type=%lu order by (create_time) desc limit %lu,15;", type, index*15] tableName:@"tab_table"];
             if (!list) {
                 list = [[NSArray alloc] init];
             }

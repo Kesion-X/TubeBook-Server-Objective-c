@@ -46,7 +46,7 @@
                                     [NSJSONSerialization JSONObjectWithData:self.content.contentData options:NSJSONReadingMutableContainers error:nil], @"content", nil];
         NSData *data = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
         int length = [data length];
-        NSLog(@"%@ %d",dic,length);
+        NSLog(@"%@ %d",self.head,length);
         NSData *lengthData = [NSData dataWithBytes:&length length:sizeof(length)];
         [self.data appendData:lengthData];
         [self.data appendData:data];

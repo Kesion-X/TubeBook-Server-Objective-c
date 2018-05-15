@@ -84,11 +84,11 @@
         } else {
             CGFloat f = [[values objectAtIndex:i] floatValue];
             NSInteger u = [[values objectAtIndex:i] integerValue];
-            
-            if ( (f-u*1.0f)>0 ) {
+
+            if ( (fabs(f)-labs(u)*1.0f)>0 ) {
                 value = [value stringByAppendingString:[NSString stringWithFormat:@"%f",[[values objectAtIndex:i] floatValue]]];
             } else {
-                value = [value stringByAppendingString:[NSString stringWithFormat:@"%lu",[[values objectAtIndex:i] integerValue]]];
+                value = [value stringByAppendingString:[NSString stringWithFormat:@"%ld",[[values objectAtIndex:i] integerValue]]];
             }
         }
         if ( i != values.count-1 ) {
